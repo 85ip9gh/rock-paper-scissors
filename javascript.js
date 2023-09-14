@@ -5,11 +5,32 @@ function getComputerChoice(){
 }
 
 function getPlayerChoice(){
+    return playerChoice = prompt("Choose rock, paper, or scissors!");
+}
 
+function playGame(){
+    let playerWins = 0;
+    let computerWins = 0;
+    
+    for(i=0;i<5;i++){    
+        let roundResult = playRound(getPlayerChoice(), getComputerChoice());
+        console.log("Round: " + (i+1) + "\n" + roundResult);
+        if(roundResult.includes("win")){
+            playerWins += 1;
+        } else{
+            computerWins += 1;
+        }
+    }
+
+    if(playerWins > computerWins){
+        console.log("You win the Game! \nTotal Score: " + playerWins + "/5");
+    } else{
+        console.log("You lose! \nTotal Score: " + playerWins + "/5");
+    }
 }
 
 function playRound(playerSelection, computerSelection){
-    const playerSelect = playerSelection.toLowercase();
+    const playerSelect = playerSelection.toLowerCase();
     if(playerSelect == "rock"){
         if(computerSelection == "rock"){
             return ("draw");
